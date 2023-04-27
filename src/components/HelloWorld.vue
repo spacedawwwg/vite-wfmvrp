@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-defineProps<{ msg: string }>();
+defineProps<{ msg: string; hasNested?: boolean }>();
 
 const emits = defineEmits<{
   (eventName: 'foo', value: number | undefined): void;
@@ -20,5 +20,5 @@ function handleClick() {
   <p>{{ msg }}</p>
   <button @click="handleClick">Click me</button>
   <hr />
-  <HelloWorld @foo="handleRandom" />
+  <HelloWorld v-if="hasNested" @foo="handleRandom" />
 </template>
